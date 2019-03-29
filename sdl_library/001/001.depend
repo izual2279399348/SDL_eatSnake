@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1549941489 source:c:\users\thinkpad\desktop\sdl\sdl_library\001\test.c
+	<SDL2/SDL.h>
+	<stdio.h>
+	<stdbool.h>
+
