@@ -3,10 +3,12 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <time.h>
-#include "test2.c"
+#include "Snakestructure.h"
+#include "draw.h"
+#include "theSnake.h"
 
-int main(int argc, char *argv[])
-{
+
+int main(int argc, char *argv[]){
     int n = 8;
     srand(time(NULL));
 
@@ -32,11 +34,14 @@ int main(int argc, char *argv[])
     int quit = 0;
     int count_;
     count_ = n;
-    snake_init(5, 0, 4, RIGHT);
-    place_apple();
-    draw_screen(renderer);
+    theSnake *theHead;
+    Food theFood;
+    theHead=CreateSnake(4,0,RIGHT);
+    snake_init(5,theHead);
+    place_the_food(&theFood);
+    draw_screen(renderer, theHead, &theFood);
     bool last_move_drawn = true;
-    int n_frames_mod = 0;
+    int speed = 0;
     while (!quit) {
         SDL_Event event;
         while (SDL_PollEvent(&event)) {
@@ -50,38 +55,38 @@ int main(int argc, char *argv[])
                     quit = 1;
                     break;
                 case SDLK_UP:
-                    if (snake_get_dir() != DOWN && snake_get_dir() != UP &&
+                    if (snake_get_dir(theHead) != DOWN && snake_get_dir(theHead) != UP &&
                             last_move_drawn) {
-                        snake_set_dir(UP);
+                        snake_set_dir(UP, theHead);
                         last_move_drawn = false;
-                    }else if(snake_get_dir() == UP&&last_move_drawn){
+                    }else if(snake_get_dir(theHead) == UP&&last_move_drawn){
                         n = 2;
                     }
                     break;
                 case SDLK_DOWN:
-                    if (snake_get_dir() != UP && snake_get_dir() != DOWN &&
+                    if (snake_get_dir(theHead) != UP && snake_get_dir(theHead) != DOWN &&
                             last_move_drawn) {
-                        snake_set_dir(DOWN);
+                        snake_set_dir(DOWN, theHead);
                         last_move_drawn = false;
-                    }else if(snake_get_dir() == DOWN&&last_move_drawn){
+                    }else if(snake_get_dir(theHead) == DOWN&&last_move_drawn){
                         n = 2;
                     }
                     break;
                 case SDLK_LEFT:
-                    if (snake_get_dir() != RIGHT && snake_get_dir() != LEFT &&
+                    if (snake_get_dir(theHead) != RIGHT && snake_get_dir(theHead) != LEFT &&
                             last_move_drawn) {
-                        snake_set_dir(LEFT);
+                        snake_set_dir(LEFT, theHead);
                         last_move_drawn = false;
-                    }else if(snake_get_dir() == LEFT&&last_move_drawn){
+                    }else if(snake_get_dir(theHead) == LEFT&&last_move_drawn){
                         n = 2;
                     }
                     break;
                 case SDLK_RIGHT:
-                    if (snake_get_dir() != LEFT && snake_get_dir() != RIGHT &&
+                    if (snake_get_dir(theHead) != LEFT && snake_get_dir(theHead) != RIGHT &&
                             last_move_drawn) {
-                        snake_set_dir(RIGHT);
+                        snake_set_dir(RIGHT, theHead);
                         last_move_drawn = false;
-                    }else if(snake_get_dir() == RIGHT&&last_move_drawn){
+                    }else if(snake_get_dir(theHead) == RIGHT&&last_move_drawn){
                         n = 2;
                     }
                     break;
@@ -94,18 +99,18 @@ int main(int argc, char *argv[])
             }
         }
 
-        if (n_frames_mod%n == 0) {
-            update_game_state();
+        if (speed%n == 0) {
+            update_game_state(theHead, &theFood);
             last_move_drawn = true;
-            n_frames_mod = 0;
+            speed = 0;
             n = count_;
         }
 
-        draw_screen(renderer);
+        draw_screen(renderer, theHead, &theFood);
         SDL_RenderPresent(renderer);
-        n_frames_mod++;
+        speed++;
     }
-
+    destroysnake(theHead);
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
 
