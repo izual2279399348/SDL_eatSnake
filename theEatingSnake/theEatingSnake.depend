@@ -1,0 +1,49 @@
+# depslib dependency file v1.0
+1555933132 source:c:\users\thinkpad\desktop\sdl\sdl_library\theeatingsnake\draw.c
+	"SDL2/SDL.h"
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	<time.h>
+	"draw.h"
+	"theSnake.h"
+	"Snakestructure.h"
+
+1555920891 c:\users\thinkpad\desktop\sdl\sdl_library\theeatingsnake\draw.h
+	"SDL2/SDL.h"
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	<time.h>
+	"Snakestructure.h"
+
+1555905888 c:\users\thinkpad\desktop\sdl\sdl_library\theeatingsnake\snakestructure.h
+	<stdio.h>
+
+1555926642 c:\users\thinkpad\desktop\sdl\sdl_library\theeatingsnake\thesnake.h
+	"SDL2/SDL.h"
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	<time.h>
+	"Snakestructure.h"
+
+1555932925 source:c:\users\thinkpad\desktop\sdl\sdl_library\theeatingsnake\main.c
+	"SDL2/SDL.h"
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	<time.h>
+	"Snakestructure.h"
+	"draw.h"
+	"theSnake.h"
+
+1555932862 source:c:\users\thinkpad\desktop\sdl\sdl_library\theeatingsnake\thesnake.c
+	"SDL2/SDL.h"
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	<time.h>
+	"Snakestructure.h"
+	"draw.h"
+
