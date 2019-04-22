@@ -65,24 +65,6 @@ void draw_food(SDL_Renderer *renderer, Food *theFood){
 }
 
 
-/*void draw_snake(SDL_Renderer *renderer){
-    SDL_Color prev;
-    SDL_GetRenderDrawColor(renderer, &prev.a, &prev.g, &prev.b, &prev.a);
-    for (int i = 0; i < snake.size; i++) {
-        SDL_Rect cell = { snake.segments[i].c * CELL_SIZE,
-            snake.segments[i].r * CELL_SIZE,
-            CELL_SIZE, CELL_SIZE
-        };
-
-        SDL_SetRenderDrawColor(renderer, LIME.r, LIME.g, LIME.b, LIME.a);
-        SDL_RenderFillRect(renderer, &cell);
-
-        SDL_SetRenderDrawColor(renderer,GREEN.r,GREEN.g,GREEN.b, 255);
-        SDL_RenderDrawRect(renderer, &cell);
-    }
-
-    SDL_SetRenderDrawColor(renderer, prev.a, prev.g, prev.b, prev.a);
-}*/
 void draw_thesnake(SDL_Renderer *renderer, theSnake *theHead){
     SDL_Color prev;
     SDL_GetRenderDrawColor(renderer, &prev.a, &prev.g, &prev.b, &prev.a);
